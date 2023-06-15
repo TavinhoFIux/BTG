@@ -1,0 +1,27 @@
+mat-toolbar{
+    height: 40%;
+    justify-content: center
+}
+
+.example-card {
+    max-width: 300px;
+    margin: 15px;
+  
+  .example-header-image-angular {
+    background-image: url('../../../assets/Image/angular_min.png');
+    background-size: cover;
+  }
+
+  .example-header-image-dotnet {
+    background-image: url('../../../assets/Image/dotnet_min.png');
+    background-size: cover;
+  }
+}
+
+.container-tech {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

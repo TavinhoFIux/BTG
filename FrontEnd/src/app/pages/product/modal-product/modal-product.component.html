@@ -1,0 +1,13 @@
+<h1 class="title-center" mat-dialog-title>{{actionButton}} Product From</h1>
+<div mat-dialog-content>
+    <form [formGroup]="productForm">
+        <mat-form-field apperance="outline">
+            <mat-label>Product Name</mat-label>
+            <input formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'center'" class="continer-buttons">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click)="submit()">{{actionButton}}</button>
+</div>
