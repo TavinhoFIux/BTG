@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -29,7 +30,7 @@ describe('AppComponent', () => {
       MatListModule,
       MatTabsModule,
       HttpClientModule],
-    declarations: [AppComponent, MenuComponent]
+    declarations: [AppComponent, MenuComponent, LoadingComponent]
   }));
 
   it('should create the app', () => {
@@ -37,13 +38,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-
-
-
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('.content span')?.textContent).toContain('FrontEnd app is running!');
-  // });
 });
