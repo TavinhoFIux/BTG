@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/core/services/base.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { environment } from 'src/environments/environment';
-import { Product } from '../interfaces/Product';
+import { Product } from '../types/product';
 
 @Injectable({
   providedIn: 'root'

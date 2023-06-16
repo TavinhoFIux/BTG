@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductComponent } from './product.component';
-import { ProductService } from 'src/app/features/product/services/product.service';
+import { ProductService } from 'src/app/pages/product/services/product.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalProductComponent } from './modal-product/modal-product.component';

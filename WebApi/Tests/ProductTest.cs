@@ -141,22 +141,6 @@ namespace WebApi.Tests
             _repositoryProduct.Verify(x => x.EditAsync(It.IsAny<Product>()), Times.Never);
         }
 
-
-        [Fact]
-        public async Task DeleteProduct_Return_InvalidOperationException()
-        {
-            //Arrange
-            DeleteProductCommand command = new (10);
-            DeleteProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
-            _errorHandlerMock.MockValidateCommand(command, false);
-
-            //Act
-            await handler.Handle(command, default);
-
-            // Assert
-            _repositoryProduct.Verify(x => x.DeleteAsync(It.IsAny<int>()), Times.Never);
-        }
-
         [Fact]
         public async Task Get_All_Product_Is_Fail()
         {

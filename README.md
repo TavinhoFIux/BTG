@@ -45,3 +45,8 @@
         Pronto, a WebApi j� criou as tabelas e alguns registros no seu localDB. 
 
         Rode o projeto e, se tudo deu certo, voc� dever� ver uma p�gina do Swagger com as APIs que utilizaremos no teste.
+
+##### Rodando os tests unitarios do front e back
+    1 - Para rodar testes do back primero acessar diretorio com comando: cd .\WebApi\ e depois executar o script: dotnet test
+
+    2- Para rodar os testes do front primeiro acessar diretorio com comando: cd .\FrontEnd\ e depois executar o script: ng test

@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductService } from 'src/app/features/product/services/product.service';
+import { ProductService } from 'src/app/pages/product/services/product.service';
 
 @Component({
   selector: 'app-modal-product',
