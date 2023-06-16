@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.Commands;
-using WebApi.Domain.Notifications;
+using WebApi.Application.Handlers.Notifications;
 using WebApi.Services;
 
 namespace WebApi.Controllers

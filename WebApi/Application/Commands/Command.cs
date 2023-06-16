@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 
-namespace WebApi.Domain.Messages
+namespace WebApi.Application.Commands
 {
     public class Command : IRequest
     {

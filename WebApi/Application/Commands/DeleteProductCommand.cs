@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using WebApi.Domain.Messages;
 
 namespace WebApi.Application.Commands
 {
@@ -13,18 +12,6 @@ namespace WebApi.Application.Commands
         {
             Id = id;
         }
-
-        public override ValidationResult Validate()
-        {
-            return new DeleteProductValidation().Validate(this);
-        }
-
-        public class DeleteProductValidation : AbstractValidator<DeleteProductCommand>
-        {
-            public DeleteProductValidation()
-            {
-
-            }
-        }
     }
 }
+

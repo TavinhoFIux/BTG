@@ -1,8 +1,8 @@
 ﻿using FluentValidation.Results;
-using WebApi.Domain.Messages;
+using WebApi.Application.Commands;
 using WebApi.Infrastructure.Errors;
 
-namespace WebApi.Domain.Notifications
+namespace WebApi.Application.Handlers.Notifications
 {
     public class ErrorHandler : IErrorHandler
     {

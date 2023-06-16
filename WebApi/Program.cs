@@ -1,6 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Domain.Notifications;
+using WebApi.Application.Handlers.Notifications;
 using WebApi.Repository;
 using WebApi.Services;
 
@@ -32,7 +32,7 @@ builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddScoped<IErrorHandler, ErrorHandler>()
     .AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<IRepositoryProduct, ProductRepository>();
+builder.Services.AddScoped<IRepositoryProduct, RepositoryProduct>();
 
 builder.Services.AddDbContext<TestDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ctx")));

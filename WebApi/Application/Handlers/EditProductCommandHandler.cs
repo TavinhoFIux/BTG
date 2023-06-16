@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using WebApi.Application.Commands;
+using WebApi.Application.Handlers.Notifications;
 using WebApi.Application.Models;
-using WebApi.Domain.Notifications;
 using WebApi.Infrastructure.Errors;
 using WebApi.Repository;
 
@@ -27,7 +27,7 @@ namespace WebApi.Application.Handlers
                 return Unit.Value;
             }
 
-            var product = new Product() { Name = request.Name, Id = request.Id };
+            Product product = new(request.Id, request.Name);
 
             try
             {

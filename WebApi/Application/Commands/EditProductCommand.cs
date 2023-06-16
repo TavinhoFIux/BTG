@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using WebApi.Domain.Messages;
 
 namespace WebApi.Application.Commands
 {

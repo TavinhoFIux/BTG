@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Domain.Notifications;
+using WebApi.Application.Handlers.Notifications;
 using WebApi.Infrastructure.Errors;
 
 namespace WebApi.Controllers

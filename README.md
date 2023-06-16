@@ -40,7 +40,7 @@
         ```
         Agora, pode rodar as migrations de fato:
         ```
-        dotnet ef update database
+        dotnet ef database update 
         ``` 
         Pronto, a WebApi j� criou as tabelas e alguns registros no seu localDB. 
 

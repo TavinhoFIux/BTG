@@ -21,13 +21,9 @@ namespace WebApi.Repository
         private Product[] getProductSeed()
         {
             List<Product> result = new();
-            for (int i = 0; i < 20; i++)
+            for (int id = 0; id < 20; id++)
             {
-                result.Add(new Product()
-                {
-                    Id = i + 1,
-                    Name = new Faker().Commerce.ProductName()
-                });
+                result.Add(new Product(id + 1, new Faker().Commerce.ProductName()));
             }
             return result.ToArray();
         }

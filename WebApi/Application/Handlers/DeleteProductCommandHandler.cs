@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using WebApi.Application.Commands;
+using WebApi.Application.Handlers.Notifications;
 using WebApi.Application.Models;
-using WebApi.Domain.Notifications;
 using WebApi.Infrastructure.Errors;
 using WebApi.Repository;
 
@@ -22,12 +22,6 @@ namespace WebApi.Application.Handlers
 
         public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            if (!_errorHandler.ValidateCommand(request))
-            {
-                return Unit.Value;
-            }
-
-
             try
             {
                 await _repositoryProduct.DeleteAsync(request.Id);

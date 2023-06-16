@@ -1,6 +1,6 @@
 ﻿using Moq;
-using WebApi.Domain.Messages;
-using WebApi.Domain.Notifications;
+using WebApi.Application.Commands;
+using WebApi.Application.Handlers.Notifications;
 
 namespace WebApi.Tests.Mock
 {

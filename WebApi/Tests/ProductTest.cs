@@ -40,15 +40,15 @@ namespace WebApi.Tests
         public async Task Create_Product_Return_Success()
         {
             //Arrange
-            var command = new CreateProductCommand("Batata Frita");
+            CreateProductCommand command = new ("Batata Frita");
 
-            var handler = new CreateProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            CreateProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.AddAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
      
 
             //Act
-            var a = await handler.Handle(command, default);
+            await handler.Handle(command, default);
 
             // Assert
             _repositoryProduct.Verify(x => x.AddAsync(It.IsAny<Product>()), Times.Once);
@@ -58,15 +58,15 @@ namespace WebApi.Tests
         public async Task Delete_Product_Return_Success()
         {
             //Arrange
-            var command = new DeleteProductCommand(150);
+            DeleteProductCommand command = new (150);
 
-            var handler = new DeleteProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            DeleteProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.DeleteAsync(It.IsAny<int>())).Returns(Task.CompletedTask);
 
 
             //Act
-            var a = await handler.Handle(command, default);
+            await handler.Handle(command, default);
 
             // Assert
             _repositoryProduct.Verify(x => x.DeleteAsync(It.IsAny<int>()), Times.Once);
@@ -76,15 +76,15 @@ namespace WebApi.Tests
         public async Task Update_Product_Return_Success()
         {
             //Arrange
-            var command = new EditProductCommand("Batata Frita", 10);
+            EditProductCommand command = new ("Batata Frita", 10);
 
-            var handler = new EditProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            EditProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.EditAsync(It.IsAny<Product>())).Returns(Task.CompletedTask);
 
 
             //Act
-            var a = await handler.Handle(command, default);
+            await handler.Handle(command, default);
 
             // Assert
             _repositoryProduct.Verify(x => x.EditAsync(It.IsAny<Product>()), Times.Once);
@@ -94,13 +94,13 @@ namespace WebApi.Tests
         public async Task  Get_All_Product_Is_Success()
         {
             //Arrange
-            var productOne = new Product() { Id = 10, Name = "Batata" };
-            var productTwo = new Product() { Id = 10, Name = "Melão" };
-            var productAll = new List<Product>() { productOne, productTwo };
+            Product productOne = new ("Batata");
+            Product productTwo = new ("Melão");
+            List<Product> productAll = new List<Product>() { productOne, productTwo };
 
             _repositoryProduct.GetAllMock(productAll);
 
-            var service = new ProductService(_repositoryProduct.Object);
+            ProductService service = new (_repositoryProduct.Object);
 
             //Act
             List<Product> productsResponse = await service.GetAllProductAsync();
@@ -115,8 +115,8 @@ namespace WebApi.Tests
         public async Task CreateProduct_Return_InvalidOperationException()
         {
             //Arrange
-            var command = new CreateProductCommand("Batata Frita");
-            var handler = new CreateProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            CreateProductCommand command = new ("Batata Frita");
+            CreateProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, false);
 
             //Act
@@ -130,8 +130,8 @@ namespace WebApi.Tests
         public async Task EditProduct_Return_InvalidOperationException()
         {
             //Arrange
-            var command = new EditProductCommand("Batata Frita", 10);
-            var handler = new EditProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            EditProductCommand command = new ("Batata Frita", 10);
+            EditProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, false);
 
             //Act
@@ -146,8 +146,8 @@ namespace WebApi.Tests
         public async Task DeleteProduct_Return_InvalidOperationException()
         {
             //Arrange
-            var command = new DeleteProductCommand(10);
-            var handler = new DeleteProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            DeleteProductCommand command = new (10);
+            DeleteProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, false);
 
             //Act
@@ -161,13 +161,13 @@ namespace WebApi.Tests
         public async Task Get_All_Product_Is_Fail()
         {
             //Arrange
-            var productOne = new Product() { Id = 10, Name = "Batata" };
-            var productTwo = new Product() { Id = 10, Name = "Melão" };
-            var productAll = new List<Product>() { productOne, productTwo };
+            Product productOne = new ("Batata");
+            Product productTwo = new ("Melão");
+            List<Product> productAll = new List<Product>() { productOne, productTwo };
 
             _repositoryProduct.GetAllMock();
 
-            var service = new ProductService(_repositoryProduct.Object);
+            ProductService service = new (_repositoryProduct.Object);
 
             //Act
             Func<Task> action = async () => await service.GetAllProductAsync();
@@ -186,9 +186,9 @@ namespace WebApi.Tests
         public async Task Create_Product_Return_ErrorValidate()
         {
             //Arrange
-            var command = new CreateProductCommand("Batata Frita");
+            CreateProductCommand command = new("Batata Frita");
 
-            var handler = new CreateProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            CreateProductCommandHandler handler = new(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.AddAsync(It.IsAny<Product>())).Throws<TimeoutException>();
             _errorHandlerMock.Setup(x => x.Add(ErrorValidate.FailCreateProduct));
@@ -206,9 +206,9 @@ namespace WebApi.Tests
         public async Task Edit_Product_Return_ErrorValidate()
         {
             //Arrange
-            var command = new EditProductCommand("Batata Frita", 10);
+            EditProductCommand command = new("Batata Frita", 10);
 
-            var handler = new EditProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            EditProductCommandHandler handler = new(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.EditAsync(It.IsAny<Product>())).Throws<TimeoutException>();
             _errorHandlerMock.Setup(x => x.Add(ErrorValidate.FailEditProduct));
@@ -226,9 +226,9 @@ namespace WebApi.Tests
         public async Task Delete_Product_Return_ErrorValidate()
         {
             //Arrange
-            var command = new DeleteProductCommand(10);
+            DeleteProductCommand command = new (10);
 
-            var handler = new DeleteProductCommandHandler(_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
+            DeleteProductCommandHandler handler = new (_mediator.Object, _errorHandlerMock.Object, _repositoryProduct.Object);
             _errorHandlerMock.MockValidateCommand(command, true);
             _repositoryProduct.Setup(x => x.DeleteAsync(It.IsAny<int>())).Throws<TimeoutException>();
             _errorHandlerMock.Setup(x => x.Add(ErrorValidate.FailDeleteProduct));

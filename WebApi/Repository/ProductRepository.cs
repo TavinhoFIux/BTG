@@ -3,11 +3,11 @@ using WebApi.Application.Models;
 
 namespace WebApi.Repository
 {
-    public class ProductRepository : IRepositoryProduct
+    public class RepositoryProduct : IRepositoryProduct
     {
         private readonly TestDbContext _ctx;
 
-        public ProductRepository(TestDbContext ctx)
+        public RepositoryProduct(TestDbContext ctx)
         {
             _ctx = ctx;
         }
