@@ -1,17 +1,12 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { tap, catchError } from 'rxjs/operators';
 import { Injectable, isDevMode } from '@angular/core';
-//import { OAuthService } from 'angular-oauth2-oidc';
 import { Header } from '../interfaces/http/header';
 
 @Injectable({
     providedIn: 'root'
 })
 export abstract class BaseService {
-
-   // constructor(protected oAuthService: OAuthService) { }
    constructor() {}
 
     protected baseUrl(): string {
@@ -31,12 +26,8 @@ export abstract class BaseService {
 
         const commonHeaders = [
             { name: 'Content-Type', value: 'application/json' },
-            { name: 'Access-Control-Allow-Headers', value: 'X-Requested-With, Content-Type, Authorization, Origin, Accept' },
+            { name: 'Access-Control-Allow-Headers', value: 'X-Requested-With, Content-Type' },
         ];
-
-        // if (this.oAuthService.authorizationHeader()) {
-        //     commonHeaders.push({ name: 'Authorization', value: this.oAuthService.authorizationHeader() });
-        // }
 
         commonHeaders.forEach(header => headers = headers.append(header.name, header.value));
 

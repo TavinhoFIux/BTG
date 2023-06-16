@@ -27,13 +27,6 @@ import { HttpPutOptions } from "../interfaces/http/http-put-options";
     public put = (url: string, options?: HttpPutOptions): Promise<any> =>
       this.request('PUT', url, options);
   
-    public patch = (
-      url: string,
-      body: any | null,
-      options?: HttpPutOptions
-    ): Promise<any> => firstValueFrom(this.http.patch(url, body, options))
-  
-  
     public delete = (url: string, options?: HttpDeleteOptions): Promise<any> =>
       this.request('DELETE', url, options);
   

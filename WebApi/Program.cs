@@ -42,11 +42,11 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-//app.UseRouting();
+app.UseRouting();
 
 app.UseCors(MyAllowSpecificOrigins);
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

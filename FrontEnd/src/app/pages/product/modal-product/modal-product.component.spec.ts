@@ -52,7 +52,7 @@ describe('ModalProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should tests function button addProduct', () => {
+  it('Deve testar se botão de adicionar um produto estar funcionando', () => {
     let button = fixture.debugElement.nativeElement.querySelector('button');
 
     button.click();
@@ -62,7 +62,7 @@ describe('ModalProductComponent', () => {
     });
   });
 
-  it('should to add Product', () => {
+  it('Deve testar se metodo de adicionar um produto estar funcionando', () => {
     component.editData = null;
     component.productForm.controls['name'].patchValue("Batata");
     let spy = spyOn(productService, 'createProduct').and.callThrough();
@@ -72,7 +72,7 @@ describe('ModalProductComponent', () => {
     expect(spy).toHaveBeenCalledTimes(1); 
   });
 
-  it('should to edit Product', () => {
+  it('Deve testar se servico de editar produtor estar sendo chamado', () => {
     component.editData = {id: 10};
     component.productForm.controls['name'].patchValue("Batata");
     let createProductMethod = spyOn(productService, 'createProduct').and.callThrough();
@@ -84,7 +84,7 @@ describe('ModalProductComponent', () => {
     expect(editProductMethod).toHaveBeenCalledTimes(1);
   });
 
-  it('should not edit Product', () => {
+  it('Deve testar se servico de editar produtor estar sendo chamado ocorrer um erro echamar servico SnackBar', () => {
     component.editData = {id: 10};
     component.productForm.controls['name'].patchValue("Batata");
     let createProductMethod = spyOn(productService, 'createProduct').and.callThrough();
@@ -99,7 +99,7 @@ describe('ModalProductComponent', () => {
     expect(editProductMethod).toHaveBeenCalledTimes(1);
   });
 
-  it('should not add Product', () => {
+  it('Deve testar se servico de criar o  produtor estar sendo chamado ocorrer um erro e  chamar servico SnackBar', () => {
     component.editData = null;
     component.productForm.controls['name'].patchValue("Batata");
     let spy = spyOn(productService, 'createProduct').and.throwError("Error");

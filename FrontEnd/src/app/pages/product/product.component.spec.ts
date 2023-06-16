@@ -63,7 +63,7 @@ describe('ProductComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should tests function button addProduct ', () => {
+  it('Deve testar se botão de criar produto estar funcionando', () => {
   
     let button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
@@ -73,7 +73,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should tests function button editProduct ', () => {
+  it('Deve testar se botão de editar estar funcionando', () => {
   
     let button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
@@ -83,7 +83,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should tests function button deleteProduct ', () => {
+  it('Deve testar se botão de deletar estar funcionando', () => {
   
     let button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
@@ -93,7 +93,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should to open dialog update in product', () => {
+  it('Deve abrir caixa de diálogo que irar alterar o produto', () => {
     const product = {id: 10, name: "Batata"};
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
 
@@ -103,7 +103,7 @@ describe('ProductComponent', () => {
   });
 
   
-  it('should to delete product', () => {
+  it('Deve testar se servico de deletar produto foi chamado e não ocorreu nenhum error', () => {
     let deleteProductMethod = spyOn(productService, 'deleteProduct').and.callThrough();
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
     
@@ -113,7 +113,7 @@ describe('ProductComponent', () => {
     expect(openSnackBar).toHaveBeenCalledTimes(0);
   });
 
-  it('should not delete product', () => {
+  it('Deve testar se servico de deletar produto foi chamado e ocorreu um error e servico de error foi chamado', () => {
     let deleteProductMethod = spyOn(productService, 'deleteProduct').and.throwError("Error");
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
     
@@ -123,7 +123,7 @@ describe('ProductComponent', () => {
     expect(deleteProductMethod).toHaveBeenCalledTimes(1);
   });
 
-  it('should to open dialog create in product', () => {
+  it('Deve abrir caixa de diálogo que irar criar o produto', () => {
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
 
     component.onCreate();
@@ -131,7 +131,7 @@ describe('ProductComponent', () => {
     expect(dialogSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should to fil table product  when create product', () => {
+  it('Deve atualizar a tabela de produto quando novo produto for criar', () => {
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
     let getProductMethod = spyOn(productService, 'getProducts').and.callThrough();
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
@@ -145,7 +145,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should not fil table product  when create product', () => {
+  it('Deve não atualizar a tabela de produto quando ocorrer um erro ao criar um novo produto', () => {
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
     let getProductMethod = spyOn(productService, 'getProducts').and.throwError("Error");
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
@@ -159,7 +159,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should to fil table product  when delete product', () => {
+  it('Deve atualizar a tabela de produto quando um produto for deletado', () => {
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
     let getProductMethod = spyOn(productService, 'getProducts').and.callThrough();
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
@@ -173,7 +173,7 @@ describe('ProductComponent', () => {
     });
   });
 
-  it('should not fil table product  when delete product', () => {
+  it('Deve não atualizar a tabela de produto quando ocorrer um erro ao deletar um produto', () => {
     const dialogSpy = spyOn(dialogMock, 'open').and.returnValue({afterClosed: () => EMPTY} as any);
     let getProductMethod = spyOn(productService, 'getProducts').and.throwError("Error");
     let openSnackBar = spyOn(matSnackBarService, 'open').and.callThrough();
